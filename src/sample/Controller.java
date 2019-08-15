@@ -66,8 +66,8 @@ public class Controller implements DAO {
     }
 
     public static Foods getFood(int idFood){
-        String sql = "Select * from foods where id like '%" +
-                idFood + "%'";
+        String sql = "Select * from foods where id = '" +
+                idFood + "'";
 
         Foods f = new Foods();
 
@@ -90,8 +90,8 @@ public class Controller implements DAO {
     }
 
     public static Recipes getRecipe(int idRecipe){
-        String sql = "Select * from recipes where id like '%" +
-                idRecipe + "%'";
+        String sql = "Select * from recipes where id = '" +
+                idRecipe + "'";
 
         Recipes rec = new Recipes();
 
@@ -114,8 +114,8 @@ public class Controller implements DAO {
     }
 
     public static User getUser(String userEmail){
-        String sql = "Select * from persons where email like '%" +
-                userEmail + "%'";
+        String sql = "Select * from persons where email = '" +
+                userEmail + "'";
 
         User user = new User();
 
@@ -158,8 +158,8 @@ public class Controller implements DAO {
     }
 
     public static List<Foods> getFoodsForRecipe(int idRecipe) {
-        String sql = "Select * from recipes_foods where recipes_id like '%" +
-                idRecipe + "%'";
+        String sql = "Select * from recipes_foods where recipes_id = '" +
+                idRecipe + "'";
         List<Foods> list = new ArrayList<>();
 
         try {

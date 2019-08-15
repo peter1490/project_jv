@@ -2,6 +2,7 @@ package sample;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ public class Main extends Application {
     private static TextField fieldUserName = new TextField();
     private static PasswordField fieldPassword = new PasswordField();
     private static GridPane root = new GridPane();
+    public static User user = new User();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -63,7 +65,7 @@ public class Main extends Application {
         Button loginButton = new Button("Login");
 
         loginButton.setOnAction(e -> labelError.setText(" "));
-        loginButton.setOnAction(e -> userLogin());
+        loginButton.setOnAction(e -> userLogin(primaryStage));
 
         GridPane.setHalignment(labelUserName, HPos.RIGHT);
 
@@ -93,11 +95,11 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private static void userLogin(){
+    private static void userLogin(Stage stage){
         String email = fieldUserName.getText();
         String pass = fieldPassword.getText();
 
-        User user = Controller.getUser(email);
+        user = Controller.getUser(email);
 
         if ( user.getEmail() !=  null ) {
             String passReal = user.getPassword();
@@ -105,6 +107,8 @@ public class Main extends Application {
 
             if (result.verified){
                 labelError.setText("Success !");
+                stage.close();
+                RecipesView.view();
             }else{
                 fieldPassword.clear();
                 labelError.setText("Wrong user password !");

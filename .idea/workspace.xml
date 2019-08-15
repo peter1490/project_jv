@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project_an_jv/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project_an_jv/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project_an_jv/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project_an_jv/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="fixed Login issue + sql request issues" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,8 +210,16 @@
       <workItem from="1565832822800" duration="524000" />
       <workItem from="1565834024562" duration="97000" />
       <workItem from="1565834284314" duration="56000" />
-      <workItem from="1565864883839" duration="3534000" />
+      <workItem from="1565864883839" duration="3798000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed Login issue + sql request issues">
+      <created>1565868887648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1565868887648</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,5 +238,7 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="fixed Login issue + sql request issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed Login issue + sql request issues" />
   </component>
 </project>

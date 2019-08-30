@@ -2,6 +2,7 @@ package sample;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,8 +18,11 @@ import java.util.List;
 
 public class Main extends Application {
 
+    private static Label labelError = new Label();
     private static TextField fieldUserName = new TextField();
     private static PasswordField fieldPassword = new PasswordField();
+    private static GridPane root = new GridPane();
+    public static User user = new User();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -39,14 +43,15 @@ public class Main extends Application {
                System.out.println(((Foods) f).getName());
            }
         }
-        */
-        System.out.println(Controller.getUser("peterbalivet@gmail.om").getPassword());
 
-        GridPane root = new GridPane();
+        System.out.println(Controller.getUser("peterbalivet@gmail.om").getPassword());
+        */
 
         root.setPadding(new Insets(20));
         root.setHgap(25);
         root.setVgap(15);
+
+        root.add(labelError, 0, 3, 2,1);
 
         Label labelTitle = new Label("Enter your user name and password!");
 
@@ -59,7 +64,8 @@ public class Main extends Application {
 
         Button loginButton = new Button("Login");
 
-        loginButton.setOnAction(e -> userLogin());
+        loginButton.setOnAction(e -> labelError.setText(" "));
+        loginButton.setOnAction(e -> userLogin(primaryStage));
 
         GridPane.setHalignment(labelUserName, HPos.RIGHT);
 
@@ -82,31 +88,39 @@ public class Main extends Application {
         GridPane.setHalignment(loginButton, HPos.RIGHT);
         root.add(loginButton, 1, 3);
 
+
         Scene scene = new Scene(root, 300, 180);
-        primaryStage.setTitle("Connection ");
+        primaryStage.setTitle("FFW");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private static void userLogin(){
+    private static void userLogin(Stage stage){
         String email = fieldUserName.getText();
         String pass = fieldPassword.getText();
-        fieldUserName.clear();
-        fieldPassword.clear();
-        User user = Controller.getUser(email);
 
-        if ( user.getEmail() !=  null) {
+        user = Controller.getUser(email);
+
+        if ( user.getEmail() !=  null ) {
             String passReal = user.getPassword();
             BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(), passReal);
 
             if (result.verified){
-                System.out.println("Success !");
+                labelError.setText("Success !");
+                stage.close();
+                RecipesView.view();
             }else{
-                System.out.println("Wrong user password !");
+                fieldPassword.clear();
+                labelError.setText("Wrong user password !");
             }
 
         }else{
-            System.out.println("Wrong user email !");
+            fieldUserName.clear();
+            fieldPassword.clear();
+
+            labelError.setText("Wrong user email !");
+            //labelError.setStyle("-fx-background-color:RED");
+
         }
     }
 
